@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>daojishi</title>
+	<script src="js/function.js"></script>
+	<script src="js/animate.js"></script>
+	<script>
+	$(function(){
+		var tianbox=$(".tian")[0];
+		var shibox=$(".shi")[0];
+		var fenbox=$(".fen")[0];
+		var miaobox=$(".miao")[0];
+		var now=new Date();
+		var fut=new Date(2016,9,1,0,0,0);
+		var nowtime=now.getTime();
+		var futtime=fut.getTime();
+		var cha=futtime-nowtime;
+		var days=Math.floor(cha/(1000*60*60*24));
+		tianbox.innerHTML=days<10?"0"+days:days;
+		var hours=Math.floor(cha/(1000*60*60))%24;
+		shibox.innerHTML=hours<10?"0"+hours:hours;
+		var mins=Math.floor(cha/(1000*60))%60;
+		fenbox.innerHTML=mins<10?"0"+mins:mins;
+		var secs=Math.floor(cha/1000)%60;
+		miaobox.innerHTML=secs<10?"0"+secs:secs;
+		setInterval(function(){
+			secs--;
+			if (secs==-1) {
+				secs=59;
+				mins--;
+				if (mins==-1) {
+					mins=59;
+					hours--;
+					if (hours==-1) {
+						hours=23;
+						days--;
+						tianbox.innerHTML=days<10?"0"+days:days;
+					};
+					shibox.innerHTML=hours<10?"0"+hours:hours;
+				};
+				fenbox.innerHTML=mins<10?"0"+mins:mins;
+			};
+			miaobox.innerHTML=secs<10?"0"+secs:secs;
+		},1000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	})
+	</script>
+	<style>
+		*{margin: 0;padding: 0;font-family:"楷体";}
+		.time{
+			width: 800px;height: 250px;
+			border: 5px solid #000;
+			margin: 0 auto;
+			border-radius: 10px;
+			margin-top: 100px;
+		}
+		.title{
+			width: 800px;height: 100px;line-height: 100px;
+			text-align: center;color: #ff0000;
+			font-size: 60px;font-weight: bold;
+			background-color: #ffaaff;
+		}
+		.main{
+			width: 800px;height: 150px;
+			position: relative;
+		}
+		.item{
+			width: 150px;height: 150px;line-height: 150px;
+			float: left;
+			font-size: 100px;color: #000;
+			background-color: #ffccff;
+			text-align: center;
+		}
+		.main span{
+			width: 50px;height: 150px;line-height: 150px;
+			display: block;float: left;
+			font-size: 40px;text-align: center;
+			background-color: #ffbbff;
+		}
+	</style>
+</head>
+<body>
+	<div class="time">
+		<div class="title">距 离 国 庆 节 还 有 :</div>
+		<div class="main">
+			<div class="item tian">00</div>
+			<span>天</span>
+			<div class="item shi">00</div>
+			<span>时</span>
+			<div class="item fen">00</div>
+			<span>分</span>
+			<div class="item miao">00</div>
+			<span>秒</span>
+		</div>
+	</div>
+</body>
+</html>

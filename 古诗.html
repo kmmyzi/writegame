@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function text(ele,text){
+			if(text!=undefined){
+				if(document.getElementsByClassName){
+				ele.textContent=text;
+				}else{
+					ele.innerText=text;
+				}
+			}else{
+				if(document.getElementsByClassName){
+					return ele.textContent;
+				}else{
+					return ele.innerText;
+				}
+			}
+		}
+		window.onload=function(){
+			var title=document.getElementsByClassName("title")[0];
+			var author=document.getElementsByClassName("author")[0];
+			var wen=document.getElementsByClassName("wen");
+			var wenarr=[{title:"《赠汪伦》",author:"李白",content:"李白乘舟将欲行,忽闻岸上踏歌声,桃花潭水深千尺,不及汪伦送我情"},{title:"《赋得古原草送别》",author:"唐居易",content:"离离原上草,一岁一枯荣,野火烧不尽,春风吹又生"},{title:"《绝句》",author:"杜甫",content:"两个黄鹂鸣翠柳,一行白鹭上青天,窗含西岭千秋雪,门泊东吴万里船"},
+			     {title:"《赋得古原草送别》",author:"白居易",content:"离离原上草,一岁一枯荣,野火烧不尽,春风吹又生"}];
+			var change=document.getElementsByClassName("input")[0];
+			change.onclick=function(){
+				var num=Math.floor(Math.random()*wenarr.length);
+				var obj=wenarr[num];
+				text(title,obj.title);
+				text(author,obj.author);
+				var content1=obj.content.split(",");
+				for(var i=0;i<wen.length;i++){
+					text(wen[i],content1[i]);
+				}
+			}
+		}
+	
+	</script>
+</head>
+<style type="text/css">
+	.box{
+		width: 300px;
+		height: 300px;
+		border: 1px solid #00ffff;
+		margin: 0 auto;
+		text-align: center;
+		position: relative;
+		font-size: 20px;
+		font-family: "楷体";
+	}
+	.box div{
+		margin-bottom: 10px;
+	}
+	.input{
+		position: absolute;
+		bottom: 5px;
+		left: 100px;
+		border: none;
+		background-color: #0000ff;
+		color: #fff;
+		width: 100px;
+		height: 30px;
+		border-radius: 5px;
+	}
+</style>
+<body>
+	<div class="box">
+		<h3 class="title">《己亥岁》</h3>
+		<h4 class="author">曹松</h4>
+		<div class="wen">泽国江山入战图</div>
+		<div class="wen">生民何计乐樵苏</div>
+		<div class="wen">凭君莫话封侯事</div>
+		<div class="wen">一将功成万骨枯</div>
+		<input type="button" value="随机切换" class="input">
+	</div>
+</body>
+</html>

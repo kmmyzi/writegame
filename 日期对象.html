@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>riqi</title>
+	<script src="js/function.js"></script>
+	<script src="js/animate.js"></script>
+	<script>
+		// var aa=new Date();
+		// console.log(aa);
+		// console.log(aa.getDate());
+		// console.log(aa.getDay());
+		// console.log(aa.getMonth());
+		// console.log(aa.getFullYear());
+		// console.log(aa.getYear());
+		// console.log(aa.getHours());
+		// console.log(aa.getMinutes());
+		// console.log(aa.getSeconds());
+		// console.log(aa.getMilliseconds());
+		// console.log(aa.getTime());
+		// console.log(aa.getTimezoneOffset());
+	$(function(){
+
+		
+		// var shi=$(".hour")[0];
+		// var fen=$(".minute")[0];
+		// var miao=$(".second")[0];
+		// var aa=new Date();
+		// var aashi=aa.getHours();
+		// shi.innerHTML=aashi<10?"0"+aashi:aashi;
+		// var aafen=aa.getMinutes();
+		// fen.innerHTML=aafen<10?"0"+aafen:aafen;
+		// var aamiao=aa.getSeconds();
+		// miao.innerHTML=aamiao<10?"0"+aamiao:aamiao;
+		// setInterval(function(){
+		// 	aamiao++;
+		// 	if (aamiao==60) {
+		// 		aamiao=0;
+		// 		aafen++;
+		// 		if (aafen==60) {
+		// 			aafen=0;
+		// 			aashi++;
+		// 			shi.innerHTML=aashi<10?"0"+aashi:aashi;
+		// 		};
+		// 		fen.innerHTML=aafen<10?"0"+aafen:aafen;
+		// 	};
+		// 	miao.innerHTML=aamiao<10?"0"+aamiao:aamiao;
+		// },1000)
+		
+
+
+
+
+
+		var time=new Date();
+		var shi=$(".hour")[0];
+		var fen=$(".minute")[0];
+		var miao=$(".second")[0];
+		var ashi=time.getHours();
+		shi.innerHTML=ashi<10?"0"+ashi:ashi;
+		var afen=time.getMinutes();
+		fen.innerHTML=afen<10?"0"+afen:afen;
+		var amiao=time.getSeconds();
+		miao.innerHTML=amiao<10?"0"+amiao:amiao;
+		setInterval(function(){
+			amiao++;
+			if (amiao==60) {
+				amiao=0;
+				afen++;
+				if (afen==60) {
+					afen=0;
+					ashi++;
+					if (ashi==24) {
+						ashi=0;
+					};
+					shi.innerHTML=ashi<10?"0"+ashi:ashi;
+				};
+				fen.innerHTML=afen<10?"0"+afen:afen;
+			};
+			miao.innerHTML=amiao<10?"0"+amiao:amiao;
+		},1000)
+	})	
+	</script>
+	<style>
+		.box{
+			width: 700px;height: 200px;
+			border: 5px solid #000;
+			margin: 0 auto;
+			border-radius: 10px;
+			position: relative;
+		}
+		.show{
+			width: 200px;height: 200px;line-height: 200px;
+			float: left;margin-right: 50px;
+			background-color: #000;
+			color: #fff;font-family: "楷体";
+			font-size: 150px;text-align: center;
+		}
+		.dian{
+			width: 20px;height: 20px;
+			border-radius: 50%;
+			background-color: #000;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="dian" style="left:215px;top: 70px;"></div>
+		<div class="dian" style="left:215px;bottom:70px;"></div>
+		<div class="dian" style="right:215px;top: 70px;"></div>
+		<div class="dian" style="right:215px;bottom:70px;"></div>
+		<div class="hour show">00</div>
+		<div class="minute show">00</div>
+		<div class="second show" style="margin-right:0;">00</div>
+	</div>
+</body>
+</html>
